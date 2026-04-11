@@ -1,10 +1,7 @@
 ; highlights.scm — Tree-sitter highlight queries for Picard Tagger Script
 ;
 ; These queries follow the standard nvim-treesitter / Helix capture naming
-; convention so the grammar integrates with editors beyond Emacs.  The
-; picard-ts-mode.el file defines its own Emacs-specific font-lock rules via
-; `treesit-font-lock-rules', but this file enables out-of-the-box highlighting
-; in Neovim, Helix, and any editor that reads queries/highlights.scm.
+; convention so the grammar integrates with editors beyond Emacs.
 
 ; Comments — $noop(...) blocks
 (noop) @comment
