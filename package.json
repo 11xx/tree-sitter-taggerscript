@@ -4,10 +4,10 @@
     "description": "Tree-sitter grammar for MusicBrainz Picard Tagger Script",
     "repository": {
         "type": "git",
-        "url": "https://codeberg.org/useless-utils/tree-sitter-taggerscript.git"
+        "url": "https://github.com/11xx/tree-sitter-taggerscript.git"
     },
-    "homepage": "https://codeberg.org/useless-utils/tree-sitter-taggerscript",
-    "bugs": "https://codeberg.org/useless-utils/tree-sitter-taggerscript/issues",
+    "homepage": "https://github.com/11xx/tree-sitter-taggerscript",
+    "bugs": "https://github.com/11xx/tree-sitter-taggerscript/issues",
     "keywords": [
         "tree-sitter",
         "parser",

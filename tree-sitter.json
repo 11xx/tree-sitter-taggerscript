@@ -22,11 +22,11 @@
     "authors": [
       {
         "name": "11xx",
-        "url": "https://codeberg.org/useless-utils/tree-sitter-taggerscript"
+        "url": "https://github.com/11xx/tree-sitter-taggerscript"
       }
     ],
     "links": {
-      "repository": "https://codeberg.org/useless-utils/tree-sitter-taggerscript"
+      "repository": "https://github.com/11xx/tree-sitter-taggerscript"
     }
   },
   "bindings": {
