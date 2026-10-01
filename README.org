@@ -1,48 +1,48 @@
 #+TITLE: tree-sitter-taggerscript
 
-Tree-Sitter grammar for MusicBrainz Picard Tagger Script.
+A tree-sitter grammar for MusicBrainz Picard's Tagger Script.
+
+Picard file-naming and tagging scripts nest =$func(...)= calls and =%variables%=
+deeply, and a script of any size is hard to read without highlighting. This
+grammar parses Tagger Script into a syntax tree that editors use for
+highlighting and structural editing; =queries/highlights.scm= provides the
+highlight captures.
+
+=$noop(...)= is treated as a comment: an external scanner (=src/scanner.c=)
+consumes its body as one opaque token, balancing nested parentheses, so text
+inside a comment is never parsed as functions or variables.
 
 ** Install
 
-*** =npm=
-#+begin_src shell
-npm install
-npm test
-#+end_src
-
-Installs to =$XDG_CACHE_HOME/tree-sitter/lib/taggerscript.so=
-
-*** =tree-sitter-cli=
-
-test with
-#+begin_src shell
-tree-sitter test
-#+end_src
-
-build with
-#+begin_src shell
-tree-sitter build
-#+end_src
-
-and it will generate the =.so= file.
-
-=npx= can also be used e.g. =npx tree-sitter test=
-
 *** Emacs
 
-For Emacs, use =treesit-install-language-grammar= with:
-#+begin_example
-https://codeberg.org/useless-utils/tree-sitter-taggerscript
-#+end_example
+Emacs 29 or later, built with tree-sitter support:
 
-A major mode https://codeberg.org/useless-utils/picard-mode is also available.
+#+begin_src emacs-lisp
+(add-to-list 'treesit-language-source-alist
+             '(taggerscript "https://github.com/11xx/tree-sitter-taggerscript"))
+(treesit-install-language-grammar 'taggerscript)
+#+end_src
 
-** Scanner
-=src/scanner.c= handles =$noop(...)= as opaque content. It tracks balanced
-parentheses and emits one external token for the whole noop body, so nested
-parentheses inside comments parse correctly without interpreting inner text as
-functions or variables.
+=picard-ts-mode=, part of [[https://github.com/11xx/picard-mode][picard-mode]], is a major mode built on this grammar.
+
+*** From source
+
+The repository commits the generated parser, so building needs only a C
+compiler and =tree-sitter-cli=:
+
+#+begin_src shell
+tree-sitter test    # run the corpus in test/corpus
+tree-sitter build   # write taggerscript.so in the current directory
+#+end_src
+
+With npm instead of a global =tree-sitter-cli=, =npm install= fetches the CLI
+and =npm test= runs the corpus.
 
 ** Credits
-This repo is not affiliated with phw's but he made a version years ago:
-https://git.sr.ht/~phw/tree-sitter-taggerscript/
+
+phw's unrelated earlier grammar: https://git.sr.ht/~phw/tree-sitter-taggerscript/
+
+** License
+
+Public domain, under the Unlicense. See [[file:LICENSE][LICENSE]].
